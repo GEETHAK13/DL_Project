@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Upload</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+
+      label {
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 4px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      label:hover {
+        background-color: #0056b3;
+      }
+
+      button[type="submit"] {
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #218838;
+      }
+
+      .file-preview {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .file-preview img {
+        max-width: 200px; /* Adjust the maximum width as needed */
+        max-height: 200px; /* Adjust the maximum height as needed */
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Upload an Image</h1>
+      <div class="file-preview" id="filePreview"></div>
+      <form action="/predict" method="post" enctype="multipart/form-data">
+        <label for="image">Choose Image</label>
+        <input
+          type="file"
+          name="image"
+          id="image"
+          accept="image/*"
+          onchange="previewFile()"
+        />
+        <button type="submit">Predict</button>
+      </form>
+    </div>
+
+    <script>
+      function previewFile() {
+        const preview = document.getElementById("filePreview");
+        const file = document.querySelector("input[type=file]").files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = function () {
+          const img = document.createElement("img");
+          img.src = reader.result;
+          preview.innerHTML = "";
+          preview.appendChild(img);
+        };
+
+        if (file) {
+          reader.readAsDataURL(file);
+        } else {
+          preview.innerHTML = "";
+        }
+      }
+    </script>
+  </body>
+</html>

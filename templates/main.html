@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Bin</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: black;
+        background-image: url("");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .navbar {
+        background-color: #883fea;
+        overflow: hidden;
+        text-align: center; /* Center the elements in the navbar */
+      }
+
+      .navbar a {
+        display: inline-block; /* Display elements in a line */
+        color: white;
+        text-align: center;
+        padding: 20px 16px;
+        text-decoration: none;
+        font-size: 24px;
+        margin: 0 50px;
+      }
+
+      .navbar a:hover {
+        border: 3px solid #fff;
+        border-radius: 2px 20px;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        background-color: #9967d6;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        animation: blink 0.5s infinite alternate;
+      }
+
+      .content {
+        padding: 20px;
+      }
+
+      .page {
+        display: none;
+      }
+
+      .page.active {
+        display: block;
+      }
+
+      .btn {
+        background-color: #6906e3;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        border: 3px solid #fff;
+        background-color: #883fea;
+        transform: scale(1.05);
+        animation: blink 0.5s infinite alternate; /* Added blink animation */
+      }
+      @keyframes blink {
+        to {
+          opacity: 0.3;
+        }
+      }
+      .bordered-content {
+        border: 2px solid #883fea; /* Border style and color */
+        border-radius: 10px; /* Optional: Add rounded corners */
+        padding: 10px; /* Optional: Add padding inside the border */
+      }
+      .bordered-content:hover {
+        border: 2px solid #883fea; /* Border style and color */
+        background-color: white;
+        color: black;
+        border-radius: 10px; /* Optional: Add rounded corners */
+        padding: 10px; /* Optional: Add padding inside the border */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="/" onclick="showPage('About')">About</a>
+      <a href="#diff" onclick="showPage('diff')">Solution</a>
+      <a href="#Predict" onclick="showPage('Predict')">Predict</a>
+    </div>
+
+    <div class="content">
+      <div id="About" class="page active" style="text-align: center">
+        <h2
+          style="
+            text-align: center;
+            color: #883fea;
+            font-size: 40px;
+            font-style: italic;
+          "
+        >
+          Waste Management
+        </h2>
+
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ24g2VYZEHsCAMV56ag16s2ufYA0ol-t3uww&usqp=CAU"
+          alt="Waste Image"
+          style="max-width: 500px; height: 300px"
+        />
+        <p style="text-align: justify; font-size: 20px">
+          Waste management in urban areas presents a multifaceted challenge due
+          to the sheer volume and diversity of materials generated. Effective
+          solutions require careful consideration of collection, sorting,
+          treatment, and disposal processes. Innovative approaches, including
+          automated segregation systems utilizing technologies like
+          Convolutional Neural Networks (CNN), aim to reduce human involvement
+          and enhance efficiency. Recycling, composting, and proper disposal
+          methods are essential components of sustainable waste management
+          practices. Public awareness and participation are crucial for
+          promoting responsible waste handling and minimizing environmental
+          impact. Collaboration between government agencies, businesses, and
+          communities is key to implementing comprehensive waste management
+          strategies.
+        </p>
+        <div class="bordered-content">
+          <h2
+            style="
+              text-align: left;
+              color: #883fea;
+              font-size: 25px;
+              font-style: italic;
+            "
+          >
+            10 negative effects of the improper removal and disposal of waste :
+          </h2>
+          <p style="text-align: center; font-size: 20px; text-align: left">
+            1. Soil contamination. <br />
+            2. Air contamination. <br />
+            3. Water contamination. <br />
+            4. Bad impact on human health. <br />
+            5. Impact on animals and marine life. <br />
+            6. Disease-carrying pests. <br />
+            7. Adversely affect the local economy. <br />
+            8. Missed recycling opportunities.<br />
+            9. Causes extreme climate changes.<br />
+            10. It is slowly killing the planet.
+          </p>
+        </div>
+        <br />
+        <div>
+          <button class="btn" onclick="nextPage()">Next</button>
+        </div>
+      </div>
+
+      <div id="diff" class="page">
+        <style>
+          .differences-table {
+            border-collapse: collapse;
+            width: 100%;
+          }
+
+          .differences-table th,
+          .differences-table td {
+            border: 3px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+          }
+
+          .differences-table th {
+            background-color: #f2f2f2;
+          }
+          b {
+            color: #b78bf1;
+          }
+        </style>
+        <h2
+          style="
+            text-align: center;
+            color: #883fea;
+            font-size: 25px;
+            font-style: italic;
+          "
+        >
+          What's the process for classification!
+        </h2>
+        <p style="text-align: left; font-size: 20px">
+          Certainly! Here's a simplified explanation of how your waste detection
+          model works:
+          <br />
+          <b>1. Input Image</b>: Start with an image of waste, like a photo of
+          trash.
+          <br />
+          <b>2. Features Extraction</b>: The model looks at the image in small
+          parts, finding simple patterns like edges or colors.
+          <br />
+          <b>3. Learning Patterns</b>: It learns more complex patterns by
+          combining these simple ones, like shapes or textures.
+          <br />
+          <b>4. Deciding Importance</b>: It decides which patterns are important
+          for telling the difference between organic and recyclable waste.
+          <br />
+          <b>5. Making Predictions</b>: Using what it's learned, the model
+          predicts whether the waste is organic or recyclable.
+          <br />
+          <b>6. Training</b>: To get better at this, the model sees lots of
+          examples of labeled waste images. It adjusts itself based on whether
+          it got the prediction right or wrong.
+          <br />
+          <b>7. Optimizing</b>: It tries to minimize mistakes and improve its
+          accuracy.
+          <br />
+          <b>8. Ready for Use</b>: Once trained, the model can quickly analyze
+          new waste images and give a prediction: organic or recyclable.
+        </p>
+
+        <div class="differences">
+          <h2
+            style="
+              text-align: center;
+              color: #883fea;
+              font-size: 25px;
+              font-style: italic;
+            "
+          >
+            How is the waste classified??
+          </h2>
+          <table class="differences-table">
+            <caption></caption>
+            <thead>
+              <tr>
+                <th>ORGANIC</th>
+                <th>RECYCLABLE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Difference 1 -->
+              <tr>
+                <td>
+                  Also known as biodegradable waste, organic waste consists of
+                  materials that can be broken down naturally by microorganisms.
+                  This includes food scraps, yard waste, and other biodegradable
+                  materials.
+                </td>
+                <td>
+                  Recyclable waste consists of materials that can be processed
+                  and reused to manufacture new products. This category includes
+                  paper, cardboard, glass, certain plastics, and metals.
+                </td>
+              </tr>
+
+              <!-- Difference 2 -->
+              <tr>
+                <td>
+                  Organic waste decomposes naturally through biological
+                  processes, typically in the presence of oxygen (aerobic) or in
+                  anaerobic conditions.
+                </td>
+                <td>
+                  Recyclable waste, especially materials like plastic and glass,
+                  may not readily decompose in the environment. Instead, they
+                  can be reprocessed to create new products.
+                </td>
+              </tr>
+
+              <!-- Difference 3 -->
+              <tr>
+                <td>
+                  Proper management of organic waste through composting or
+                  anaerobic digestion can help reduce the production of harmful
+                  greenhouse gases and enrich soil fertility.
+                </td>
+                <td>
+                  Recycling reduces the demand for raw materials and energy
+                  needed to manufacture new products. It also minimizes the
+                  environmental impact associated with the extraction and
+                  processing of raw materials.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Kitchen scraps (fruit and vegetable peels, coffee grounds),
+                  yard waste (grass clippings, leaves), and other biodegradable
+                  materials.
+                </td>
+                <td>
+                  Paper and cardboard, glass bottles and jars, certain types of
+                  plastics (marked with recycling codes), aluminum and steel
+                  cans.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDwlzm1Ze0yT1moF-BxVQOEE9mb2wiqsJOCK-M_2C5Ow&s"
+                  />
+                </td>
+                <td>
+                  <img
+                    src="data:image/jpeg;base64,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"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="text-align: center">
+          <button class="btn" onclick="prevPage()">Previous</button>
+          <button class="btn" onclick="nextPage()">Next</button>
+        </div>
+      </div>
+
+      <div id="Predict" class="page">
+        <h2
+          style="
+            text-align: center;
+            color: #883fea;
+            font-size: 40px;
+            font-style: italic;
+          "
+        >
+          Predict whether the object is Organic or Recyclable :
+        </h2>
+        <style>
+          .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+            display: flex;
+            margin: auto;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 150px;
+          }
+
+          h1 {
+            color: #333;
+            margin-bottom: 20px;
+          }
+
+          input[type="file"] {
+            display: none;
+          }
+
+          label {
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+          }
+
+          label:hover {
+            background-color: #0056b3;
+          }
+
+          button[type="submit"] {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+          }
+
+          button[type="submit"]:hover {
+            background-color: #218838;
+          }
+
+          .file-preview {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+          }
+
+          .file-preview img {
+            max-width: 200px; /* Adjust the maximum width as needed */
+            max-height: 200px; /* Adjust the maximum height as needed */
+            margin-right: 10px;
+          }
+        </style>
+        <div class="container">
+          <h1>Upload an Image</h1>
+          <div class="file-preview" id="filePreview"></div>
+          <form action="/predict" method="post" enctype="multipart/form-data">
+            <label for="image">Choose Image</label>
+            <input
+              type="file"
+              name="image"
+              id="image"
+              accept="image/*"
+              onchange="previewFile()"
+            />
+            <button type="submit">Predict</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let currentPageIndex = 0;
+      const pages = document.querySelectorAll(".page");
+
+      function showPage(pageName) {
+        pages.forEach((page) => page.classList.remove("active"));
+        document.getElementById(pageName).classList.add("active");
+      }
+
+      function nextPage() {
+        if (currentPageIndex < pages.length - 1) {
+          currentPageIndex++;
+          showPageAtIndex();
+        }
+      }
+
+      function prevPage() {
+        if (currentPageIndex > 0) {
+          currentPageIndex--;
+          showPageAtIndex();
+        }
+      }
+
+      function showPageAtIndex() {
+        pages.forEach((page) => page.classList.remove("active"));
+        pages[currentPageIndex].classList.add("active");
+      }
+
+      function previewFile() {
+        const preview = document.getElementById("filePreview");
+        const file = document.querySelector("input[type=file]").files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = function () {
+          const img = document.createElement("img");
+          img.src = reader.result;
+          preview.innerHTML = "";
+          preview.appendChild(img);
+        };
+
+        if (file) {
+          reader.readAsDataURL(file);
+        } else {
+          preview.innerHTML = "";
+        }
+      }
+    </script>
+  </body>
+</html>
